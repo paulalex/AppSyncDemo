@@ -1,0 +1,37 @@
+service: appsync-intro
+plugins:
+  - serverless-appsync-plugin
+  - serverless-pseudo-parameters
+provider:
+ name: aws
+ region: eu-west-2
+ runtime: python3.8
+custom:
+  appSync:
+    # name:  # defaults to api
+    authenticationType: API_KEY
+    logConfig:
+      loggingRoleArn: { Fn::GetAtt: [AppSyncLoggingServiceRole, Arn] }
+      level: ALL
+    mappingTemplates:
+      - dataSource: Users
+        type: Query
+        field: getUser
+        request: "getUser-request-mapping-template.vtl"
+        response: "getUser-response-mapping-template.vtl"
+    dataSources:
+      - type: AMAZON_DYNAMODB
+        name: Users
+        description: Users Table
+        config:
+          tableName: arn:aws:dynamodb:eu-west-2:039888977240:table/Users
+          serviceRoleArn: { Fn::GetAtt: [AppSyncDynamoDBServiceRole, Arn] }
+          iamRoleStatements:
+            - Effect: "Allow"
+              Action:
+                - "dynamodb:*"
+              Resource:
+                - "arn:aws:dynamodb:::table/Users"
+                - "arn:aws:dynamodb:::table/Users/*"
+resources:
+  - ${file(resources/roles.yml)}

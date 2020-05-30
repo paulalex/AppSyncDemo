@@ -1,0 +1,6 @@
+.serverless
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+node_modules
+package-lock.json

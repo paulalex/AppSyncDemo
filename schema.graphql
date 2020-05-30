@@ -1,0 +1,20 @@
+type User {
+    userid: String!
+    username: String!
+    orders: [Order]!
+}
+
+type Order {
+    orderid: String!
+    userid: String!
+    productid: String!
+}
+
+type Query {
+    getUser(userid: String!): String!
+    getOrder(orderid: String!): String!
+}
+
+schema {
+    query: Query
+}

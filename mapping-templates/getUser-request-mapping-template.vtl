@@ -1,0 +1,11 @@
+{
+  "version": "2017-02-28",
+  "operation": "Invoke",
+  "payload": {
+    ## Imagine this is a resolver for a getTask GraphQL query
+    "query": "getUser",
+    ## We pass in the entire context so we have all the arguments, identity,
+    ## and other request data in our Lambda function.
+    "context": $utils.toJson($context)
+  }
+}
