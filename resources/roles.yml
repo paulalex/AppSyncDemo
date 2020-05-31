@@ -31,8 +31,12 @@ Resources:
                   - "dynamodb:Scan"
                   - "dynamodb:UpdateItem"
                 Resource:
-                  - "arn:aws:dynamodb:${self:provider.region}::table/Users"
-                  - "arn:aws:dynamodb:${self:provider.region}::table/Users/*"
+                  - "${ssm:/appsync-demo/dynamo-table/users}"
+                  - "${ssm:/appsync-demo/dynamo-table/users}/*"
+                  - "${ssm:/appsync-demo/dynamo-table/orders}"
+                  - "${ssm:/appsync-demo/dynamo-table/orders}/*"
+                  - "${ssm:/appsync-demo/dynamo-table/products}"
+                  - "${ssm:/appsync-demo/dynamo-table/products}/*"
   AppSyncLoggingServiceRole:
     Type: "AWS::IAM::Role"
     Properties:

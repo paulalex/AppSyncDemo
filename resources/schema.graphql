@@ -1,0 +1,30 @@
+type User {
+    UserId: String!
+    Username: String!
+}
+
+type Order {
+    OrderId: String!
+    UserId: String!
+    ProductId: String!
+}
+
+type Product {
+    ProductId: String!
+    ProductName: String!
+}
+
+type Query {
+    getUser(UserId: String!): User
+    getOrder(OrderId: String!): Order
+}
+
+type Mutation {
+    createUser(UserId: String!, Username: String!): User
+    createOrder(OrderId: String!, UserId: String!, ProductId: String!): Order
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}

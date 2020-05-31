@@ -4,3 +4,6 @@ terraform.tfstate
 terraform.tfstate.backup
 node_modules
 package-lock.json
+
+https://q5v5jkgasvd5hleahoz2rz7oym.appsync-api.eu-west-2.amazonaws.com/graphql
+da2-dxtx7uslw5e5rhnvldtt2hqhxm
