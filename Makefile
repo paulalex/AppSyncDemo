@@ -34,7 +34,7 @@ apply: validate build
 
 deploy:
 	@echo "Deploying serverless components for ** APP SYNC EXAMPLE **."
-	@sls deploy -v
+	@sls deploy -v -c ./resources/serverless.yaml
 	@echo "Serverless deployment complete for ** APP SYNC EXAMPLE **."
 
 clean:
